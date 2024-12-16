@@ -12,9 +12,10 @@
     />
     <link rel="icon" type="image/x-icon" href="./Assets/Images/logo.png">
     <link rel="stylesheet" href="style.css" />
+    <script src="app.js"></script>
   </head>
   <body data-bs-theme="light">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top ">
       <div class="container-fluid d-flex justify-content-between">
         <img src="./Assets/Images/logo.png" width="40" alt="A logo image" />
         <a class="navbar-brand" href="#"><b>Cymru Games</b></a>
@@ -41,8 +42,15 @@
             <li class="nav-item">
               <a class="nav-link" href="features.html">Features</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="product.html">Products</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Partners
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="dakko.html">Dakko Dakko</a></li>
+                <li><a class="dropdown-item" href="deceptive-games.html">Deceptive Games</a></li>
+                <li><a class="dropdown-item" href="blackdragon.html">Black Dragon</a></li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="aboutus.html">About Us</a>
@@ -60,9 +68,11 @@
               class="form-check-input p-2"
               type="checkbox"
               role="switch"
-              id="flexSwitchCheckChecked"
-              onclick="darkMode()"
+              id="toggleDarkMode"
+              
+              
             />
+            
           </div>
         </div>
       </div>
@@ -78,7 +88,7 @@
           The best game development company in Wales. We are going in rise the demand of game industry in Wales. Invest with us to rise the game industry together. Deploy and run the games server world-wide seamlessly with cloud computing servers. Invest with us! Rise with us!
         </p>
         <p class="lead">
-          <a href="learnmore.html" class="btn btn-lg btn-warning fw-bold"
+          <a href="learnmore.html" title="a button link to learn more page" class="btn btn-lg btn-warning fw-bold"
             >Learn more</a
           >
         </p>
@@ -96,9 +106,13 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link text-body-secondary" href="product.html"
-            >Products</a
-          >
+          <a class="nav-link text-body-secondary" href="dakko.html">Dakko Dakko</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-body-secondary" href="deceptive-games.html">Deceptive Games</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-body-secondary" href="blackdragon.html">Black Dragon</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-body-secondary" href="aboutus.html"
@@ -126,12 +140,55 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="app.js"></script>
   </body>
   <script>
-    function darkMode() {
-      var element = document.body;
-      element.dataset.bsTheme =
-        element.dataset.bsTheme == "light" ? "dark" : "light";
+    const toggleButton = document.getElementById('toggleDarkMode');
+    const bodyElement = document.body;
+
+    // Check if dark mode is enabled in localStorage
+   if (localStorage.getItem('theme') === 'dark') {
+      bodyElement.setAttribute('data-bs-theme', 'dark');
+    } else {
+      bodyElement.setAttribute('data-bs-theme', 'light');
     }
+
+    // Toggle dark mode on button click
+    toggleButton.addEventListener('click', function() {
+      const currentTheme = bodyElement.getAttribute('data-bs-theme');
+      
+      // Toggle between dark and light mode
+      if (currentTheme === 'dark') {
+        bodyElement.setAttribute('data-bs-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        bodyElement.setAttribute('data-bs-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+          
+    const checkbox = document.getElementById('toggleDarkMode');
+    
+    // On page load, check if the checkbox was previously checked
+    if (localStorage.getItem('checkboxState') === 'checked') {
+      checkbox.checked = true;
+    }
+
+    // Add event listener to the checkbox
+    checkbox.addEventListener('change', function() {
+      // Save the checkbox state in localStorage when it changes
+      if (checkbox.checked) {
+        localStorage.setItem('checkboxState', 'checked');
+      } else {
+        localStorage.setItem('checkboxState', 'unchecked');
+      }
+    });
+
+
+</script>
+
+
+
+    
   </script>
 </html>

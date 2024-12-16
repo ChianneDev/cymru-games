@@ -1,8 +1,8 @@
 function learnMore() {
     window.open('learnmore.html');
 };
-function projectButton() {
-    window.open('product.html');
+function dakkoButton() {
+    window.open('dakko.html');
 };
 function aboutButton() {
     window.open('aboutus.html');
@@ -16,3 +16,8 @@ function welshGov() {
 function featureButton(){
     window.open('features.html');
 }
+
+
+
+
+
